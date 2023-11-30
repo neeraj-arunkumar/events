@@ -1,0 +1,34 @@
+observers:
+  - name: "Min Vehicle Distance"
+    requirement_uuids:
+    - SYS-004
+    - OBS-3484
+    always:
+        distance:
+          obstacle_a: { type : VEHICLE }
+          obstacle_b: { ego: true }
+          fail_if_below_m: 1
+  - name: "Min Pedestrian Distance"
+    requirement_uuids:
+    - SYS-003
+    always:
+        distance:
+          obstacle_a: { type : PEDESTRIAN }
+          obstacle_b: { ego: true }
+          fail_if_below_m: 1
+  - name: "Time to Collision (vehicles)"
+    requirement_uuids:
+    - SYS-006
+    - OBS-3483
+    always_true:
+      compare:
+        greater_than:
+          static_number: 2
+        x:
+          time_to_collision:
+            time_to_collision_version:
+              minor: 3
+            obstacle:
+              obstacle_type: VEHICLE
+            visualization_options:
+              visualization_mode: DISABLED
