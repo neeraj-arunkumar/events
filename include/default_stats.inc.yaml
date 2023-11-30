@@ -1,0 +1,171 @@
+metrics:
+- name: Ego pose x coordinate
+  from_number_stat:
+    agent_motion:
+      reference_obstacle:
+        ego: {}
+      px: {}
+- name: Ego pose y coordinate
+  from_number_stat:
+    agent_motion:
+      reference_obstacle:
+        ego: {}
+      py: {}
+- name: Ego longitudinal velocity
+  from_number_stat:
+    agent_motion:
+      reference_obstacle:
+        ego: {}
+      longitudinal_velocity: {}
+- name: Ego longitudinal acceleration
+  from_number_stat:
+    agent_motion:
+      reference_obstacle:
+        ego: {}
+      longitudinal_acceleration: {}
+- name: Ego longitudinal jerk
+  from_number_stat:
+    agent_motion:
+      reference_obstacle:
+        ego: {}
+      longitudinal_jerk: {}
+- name: Ego lateral velocity
+  from_number_stat:
+    agent_motion:
+      reference_obstacle:
+        ego: {}
+      lateral_velocity: {}
+- name: Ego lateral acceleration
+  from_number_stat:
+    agent_motion:
+      reference_obstacle:
+        ego: {}
+      lateral_acceleration: {}
+- name: Ego lateral jerk
+  from_number_stat:
+    agent_motion:
+      reference_obstacle:
+        ego: {}
+      lateral_jerk: {}
+- name: Ego distance from lane centerline
+  from_number_stat:
+    ego_distance_to_centerline: {}
+- name: Ego distance traveled
+  from_number_stat:
+    ego_distance_traveled: {}
+- name: Time to collision (all obstacles)
+  from_number_stat:
+    time_to_collision:
+      obstacle:
+        all_obstacles: {}
+      time_to_collision_version:
+        minor: 3
+- name: Ego velocity at collision
+  from_number_stat:
+    ego_velocity_at_collision: {}
+- name: Distance to nearest obstacle
+  from_number_stat:
+    distance_between_obstacles:
+      min_distance:
+        obstacle_a: {ego: {}}
+        obstacle_b: {all_obstacles: {}}
+- name: Distance to nearest vehicle
+  from_number_stat:
+    distance_between_obstacles:
+      min_distance:
+        obstacle_a: {ego: {}}
+        obstacle_b: {obstacle_type: VEHICLE}
+- name: Distance to nearest pedestrian
+  from_number_stat:
+    distance_between_obstacles:
+      min_distance:
+        obstacle_a: {ego: {}}
+        obstacle_b: {obstacle_type: PEDESTRIAN}
+- name: Distance to nearest bicyclist
+  from_number_stat:
+    distance_between_obstacles:
+      min_distance:
+        obstacle_a: {ego: {}}
+        obstacle_b: {obstacle_type: BICYCLE}
+- name: Distance to nearest truck
+  from_number_stat:
+    distance_between_obstacles:
+      min_distance:
+        obstacle_a: {ego: {}}
+        obstacle_b: {obstacle_type: TRUCK}
+- name: Distance to nearest bus
+  from_number_stat:
+    distance_between_obstacles:
+      min_distance:
+        obstacle_a: {ego: {}}
+        obstacle_b: {obstacle_type: BUS}
+- name: Distance to nearest motorcycle
+  from_number_stat:
+    distance_between_obstacles:
+      min_distance:
+        obstacle_a: {ego: {}}
+        obstacle_b: {obstacle_type: MOTORCYCLE}
+- name: Number of vehicles
+  from_number_stat:
+    count_obstacles:
+      obstacles: {obstacle_type: VEHICLE}
+- name: Number of pedestrians
+  from_number_stat:
+    count_obstacles:
+      obstacles: {obstacle_type: PEDESTRIAN}
+- name: Number of bicycles
+  from_number_stat:
+    count_obstacles:
+      obstacles: {obstacle_type: BICYCLE}
+- name: Number of trucks
+  from_number_stat:
+    count_obstacles:
+      obstacles: {obstacle_type: TRUCK}
+- name: Number of buses
+  from_number_stat:
+    count_obstacles:
+      obstacles: {obstacle_type: BUS}
+- name: Number of motorcycles
+  from_number_stat:
+    count_obstacles:
+      obstacles: {obstacle_type: MOTORCYCLE}
+- name: Ego distance to left line
+  from_number_stat:
+    ego_distance_to_left_line: {}
+- name: Ego distance to right line
+  from_number_stat:
+    ego_distance_to_right_line: {}
+- name: Ego wait time
+  from_number_stat:
+    ego_wait_time: {}
+- name: Ego road grade
+  from_number_stat:
+    ego_road_grade: {}
+- name: "IAPT for obstacles merging in front of ego"
+  from_number_stat:
+    iapt:
+      region_length: 30  # [m]
+      region_width: 2    # [m]
+      lane_split_preference: FORWARD
+      reporting_method: STATIC_IAPT
+      obstacle:
+        all_obstacles: {}
+      reference_obstacle:
+        ego: {}
+- name: "Ego heading relative to its current lane"
+  from_number_stat:
+    lane_relative_orientation:
+      obstacle:
+        ego: {}
+- name: Consecutive time with decel greater than 6m/s/s
+  from_number_stat:
+    time_while_true:
+      condition:
+        compare:
+          x:
+            agent_motion:
+              reference_obstacle:
+                ego: {}
+              longitudinal_acceleration: {}
+          less_than:
+            static_number: -6
